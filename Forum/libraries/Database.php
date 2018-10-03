@@ -15,7 +15,7 @@ class Database{
 
         // Set options
         $options = array(
-            PDO::ATTR_PERSISTENT => true,
+            PDO::ATTR_PERSISTENT => false,
             PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION
         );
 

@@ -7,7 +7,7 @@ function urlFormat($str){
     $str = preg_replace('/\s*/', '', $str);
 
     //Convert the string to all lowercase
-    $str = strlower($str);
+    $str = strtolower($str);
 
     //URL encode
     $str = urlencode($str);
@@ -18,7 +18,7 @@ function urlFormat($str){
 Format Date
  */
 function formatDate($date){
-    $date = data("F j, Y, g:i, a", strtotime($date));
+    $date = date("F j, Y, g:i, a", strtotime($date));
     return $date;
 }
  ?>

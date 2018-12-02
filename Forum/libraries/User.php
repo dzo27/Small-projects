@@ -10,7 +10,7 @@ class User{
     public function __construct(){
         $this->db = new Database;
     }
-    
+
     /*
 	Register User
 	 */
@@ -66,4 +66,55 @@ class User{
  			redirect('register.php', 'Invalid File Type!', 'error');
  		}
  	}
+
+    /*
+    User login
+     */
+    public function login($username, $password){
+        $this->db->query("SELECT * FROM users WHERE username = :username AND password = :password");
+
+        //bind value
+        $this->db->bind(":username", $username);
+        $this->db->bind(":password", $password);
+
+        $row = $this->db->single();
+
+        //check rows
+        if ($this->db->rowCount() > 0) {
+            $this->setUserData($row);
+            return true;
+        }else {
+            return false;
+        }
+    }
+
+    /*
+    set user data
+     */
+    private function setUserData($row){
+        $_SESSION['is_logged_in'] = true;
+        $_SESSION['user_id'] = $row->id;
+        $_SESSION['username'] = $row->username;
+        $_SESSION['name'] = $row->name;
+    }
+
+    /*
+    user logout
+     */
+    public function logout(){
+        unset($_SESSION['is_logged_in']);
+        unset($_SESSION['user_id']);
+        unset($_SESSION['username']);
+        unset($_SESSION['name']);
+        return true;
+    }
+
+    /*
+    get total number of users
+     */
+    public function getTotalUsers(){
+        $this->db->query("SELECT * FROM users");
+        $rows= $this->db->resultset();
+        return $this->db->rowCount();
+    }
 }

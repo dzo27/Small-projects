@@ -7,12 +7,12 @@
     <title>Welcome To Forum</title>
 
     <!-- Bootstrap core CSS -->
-    <link href="<?php echo BASE_URI; ?>templates/css/bootstrap.css" rel="stylesheet">
+    <link href="templates/css/bootstrap.css" rel="stylesheet">
     <!-- Custom styles for this template -->
-    <link href="<?php echo BASE_URI; ?>templates/css/custom.css" rel="stylesheet">
+    <link href="templates/css/custom.css" rel="stylesheet">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
-    <script src="<?php echo BASE_URI; ?>js/bootstrap.js"></script>
-    <script src="<?php echo BASE_URI; ?>js/ckeditor/ckeditor.js"></script>
+    <script src="templates/js/bootstrap.js"></script>
+    <script src="templates/js/ckeditor/ckeditor.js"></script>
     <?php
     //Check if title is set, if not assign it
     if(!isset($title)){
